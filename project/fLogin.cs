@@ -1,5 +1,6 @@
-using project.DAO;
+﻿using project.DAO;
 using project.DTO;
+using System.Drawing.Drawing2D;
 
 namespace project
 {
@@ -25,7 +26,7 @@ namespace project
             }
             else
             {
-                MessageBox.Show("Login fail");
+                MessageBox.Show("Login fail", "Thông báo");
             }
             
         }
@@ -46,6 +47,5 @@ namespace project
                 e.Cancel = true;
             }
         }
-
     }
 }

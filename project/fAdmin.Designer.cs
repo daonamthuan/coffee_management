@@ -31,7 +31,7 @@
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.cbbAccountType = new System.Windows.Forms.ComboBox();
+            this.txbAccountType = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -174,20 +174,19 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.cbbAccountType);
+            this.panel19.Controls.Add(this.txbAccountType);
             this.panel19.Controls.Add(this.label11);
             this.panel19.Location = new System.Drawing.Point(429, 209);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(350, 63);
             this.panel19.TabIndex = 10;
             // 
-            // cbbAccountType
+            // txbAccountType
             // 
-            this.cbbAccountType.FormattingEnabled = true;
-            this.cbbAccountType.Location = new System.Drawing.Point(122, 17);
-            this.cbbAccountType.Name = "cbbAccountType";
-            this.cbbAccountType.Size = new System.Drawing.Size(225, 28);
-            this.cbbAccountType.TabIndex = 2;
+            this.txbAccountType.Location = new System.Drawing.Point(122, 18);
+            this.txbAccountType.Name = "txbAccountType";
+            this.txbAccountType.Size = new System.Drawing.Size(225, 27);
+            this.txbAccountType.TabIndex = 2;
             // 
             // label11
             // 
@@ -283,6 +282,7 @@
             this.btnViewAccount.TabIndex = 3;
             this.btnViewAccount.Text = "View";
             this.btnViewAccount.UseVisualStyleBackColor = true;
+            this.btnViewAccount.Click += new System.EventHandler(this.btnViewAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -292,6 +292,7 @@
             this.btnEditAccount.TabIndex = 2;
             this.btnEditAccount.Text = "Edit";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -301,6 +302,7 @@
             this.btnDeleteAccount.TabIndex = 1;
             this.btnDeleteAccount.Text = "Delete";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
@@ -310,6 +312,7 @@
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Add";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // tpTable
             // 
@@ -630,10 +633,12 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.Info;
             this.panel6.Controls.Add(this.panel10);
             this.panel6.Controls.Add(this.panel9);
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Controls.Add(this.panel7);
+            this.panel6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel6.Location = new System.Drawing.Point(435, 77);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(344, 371);
@@ -748,8 +753,10 @@
             // 
             this.txbFoodID.Location = new System.Drawing.Point(74, 18);
             this.txbFoodID.Name = "txbFoodID";
+            this.txbFoodID.ReadOnly = true;
             this.txbFoodID.Size = new System.Drawing.Size(261, 27);
             this.txbFoodID.TabIndex = 0;
+            this.txbFoodID.TextChanged += new System.EventHandler(this.txbFoodID_TextChanged);
             // 
             // panel5
             // 
@@ -793,6 +800,7 @@
             this.btnSearchFood.TabIndex = 4;
             this.btnSearchFood.Text = "Search";
             this.btnSearchFood.UseVisualStyleBackColor = true;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // panel1
             // 
@@ -823,6 +831,7 @@
             this.btnEditFood.TabIndex = 2;
             this.btnEditFood.Text = "Edit";
             this.btnEditFood.UseVisualStyleBackColor = true;
+            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
             // 
             // btnDeleteFood
             // 
@@ -832,6 +841,7 @@
             this.btnDeleteFood.TabIndex = 1;
             this.btnDeleteFood.Text = "Delete";
             this.btnDeleteFood.UseVisualStyleBackColor = true;
+            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
             // 
             // btnAddFood
             // 
@@ -841,6 +851,7 @@
             this.btnAddFood.TabIndex = 0;
             this.btnAddFood.Text = "Add";
             this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // tpBill
             // 
@@ -986,12 +997,21 @@
 
         }
 
+        //private void btnViewBill_Click(object sender, EventArgs e)
+        //{
+        //    LoadListFood();
+        //}
+
+        //private void btnViewFood_Click(object sender, EventArgs e)
+        //{
+        //    LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
+        //}
+
         #endregion
 
         private TabPage tpAccount;
         private Button btnResetPassword;
         private Panel panel19;
-        private ComboBox cbbAccountType;
         private Label label11;
         private Panel panel14;
         private Label label4;
@@ -1069,5 +1089,6 @@
         private Panel panel3;
         private DataGridView dtgvBill;
         private TabControl tbAdmin;
+        private TextBox txbAccountType;
     }
 }

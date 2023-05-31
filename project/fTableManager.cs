@@ -70,11 +70,11 @@ namespace project
                 btn.Tag = item;
                 if (item.Status == "Trống")
                 {
-                    btn.BackColor = Color.AntiqueWhite;
+                    btn.BackColor = Color.FromArgb(255, 252, 215);
                 }
                 else 
                 {
-                    btn.BackColor = Color.MediumVioletRed;
+                    btn.BackColor = Color.FromArgb(189, 25, 42);
                 }
                 flpTable.Controls.Add(btn);
             }
@@ -129,9 +129,32 @@ namespace project
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin();
-            this.Hide();
+            f.InsertFood += F_InsertFood;
+            f.DeleteFood += F_DeleteFood;
+            f.UpdateFood += F_UpdateFood;
             f.ShowDialog();
-            this.Show();
+        }
+
+        private void F_UpdateFood(object? sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)    
+                ShowBill((lsvBill.Tag as Table).ID);
+        }
+
+        private void F_DeleteFood(object? sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).ID);
+            LoadTable();
+        }
+
+        private void F_InsertFood(object? sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).ID);
         }
 
         private void cbbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,6 +175,11 @@ namespace project
             // Lấy Table hiện tại muốn AddFood
             Table table = lsvBill.Tag as Table;
             // Lay idBill hien tai, không có thì trả về -1 (bàn mới)
+            if (table == null)
+            {
+                MessageBox.Show("Bạn chưa chọn bàn để thêm món ăn!", "Thông báo");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             // Lay foodID muon them
             int foodID = (cbbFoodByCategory.SelectedItem as Food).ID;
@@ -182,6 +210,11 @@ namespace project
             // Lay Table hiện tại
             Table table = lsvBill.Tag as Table;
             // Lay IDBill, trả về -1 nếu không có bill cho bàn (bàn mới)
+            if (table == null)
+            {
+                MessageBox.Show("Bạn chưa chọn bàn để thanh toán!", "Thông báo");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             // int discount = (int)nmDiscount.Value;
             float finalTotalPrice = (float)Convert.ToDouble(txbTotalBillPrice.Text.Split(',')[0]);

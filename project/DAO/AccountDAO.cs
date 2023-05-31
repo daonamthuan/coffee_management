@@ -45,5 +45,34 @@ namespace project.DAO
             return null;
         }
 
+        public DataTable GetListAccount()
+        {
+            return  DataProvider.Instance.ExecuteQuery("SELECT aUsername, displayname, aType FROM Account");
+        }
+
+        public bool InsertAccount(string username, string displayname, int type)
+        {
+            string query = "INSERT INTO Account (aUsername , displayname , aType) VALUES (N'" + username + "' , N'" + displayname + "' , " + type + " )";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateFood(int id, string username, string displayname, int type)
+        {
+            string query = String.Format("UPDATE Account SET aUsername = N'{0}' , displayname = N'{1}', type = {2} WHERE id = {3}", username, displayname, type, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteFood(int idAccount)
+        {
+            string query = "DELETE Food WHERE id = " + idAccount;
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
     }
 }

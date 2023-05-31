@@ -32,6 +32,7 @@ namespace project
         {
             txbUsername.Text = LoginAccount.Username;
             txbDisplayName.Text = LoginAccount.DisplayName;
+            lbUsername.Text = "@" + LoginAccount.Username;
         }
 
         void UpdateAccount()
@@ -41,6 +42,7 @@ namespace project
             string password = txbPassword.Text;
             string newPassword = txbNewPassword.Text;
             string reenterPassword = txbReEnterPassword.Text;
+            lbUsername.Text = txbUsername.Text;
             if (!newPassword.Equals(reenterPassword))
             {
                 MessageBox.Show("Vui lòng nhập lại đúng mật khẩu mới !");
@@ -67,5 +69,6 @@ namespace project
         {
             UpdateAccount();
         }
+
     }
 }

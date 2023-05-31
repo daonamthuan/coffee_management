@@ -38,6 +38,10 @@ namespace project.DAO
             DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertBillDetail @idBill , @idFood , @quantity ", new object[] { idBill, idFood, quantity });
         }
 
-
+        // Khi xóa Food thì phải xóa những BillDetail có chứa Food
+        public void DeleteBillDetailByFoodID(int idFood)
+        {
+            DataProvider.Instance.ExecuteNonQuery("DELETE BillDetail WHERE idFood = " + idFood);
+        }
     }
 }

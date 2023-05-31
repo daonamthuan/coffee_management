@@ -48,5 +48,44 @@ namespace project.DAO
             }
             return listFood;
         }
+
+        public bool InsertFood(string name, int idCategory, float price)
+        {
+            string query = "INSERT INTO Food (fName , idCategory , price) VALUES (N'" + name + "' , " + idCategory + " , " + price + " )";
+            int result =  DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateFood(int idFood, string name, int idCategory, float price)
+        {
+            string query = String.Format("UPDATE Food SET fName = N'{0}' , idCategory = {1}, price = {2} WHERE id = {3}", name, idCategory, price, idFood);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteFood(int idFood)
+        {
+            BillDetailDAO.Instance.DeleteBillDetailByFoodID(idFood);
+            string query = "DELETE Food WHERE id = " + idFood;
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public List<Food> SearchFoodByName (string name)
+        {
+            List<Food> listFood = new List<Food>();
+            string query = String.Format("SELECT * FROM Food WHERE [dbo].[fuConvertToUnsign1](fName) LIKE N'%' + [dbo].[fuConvertToUnsign1](N'{0}') + '%' ", name);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                listFood.Add(food);
+            }
+            return listFood;
+        }
     }
 }

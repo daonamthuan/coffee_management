@@ -36,5 +36,17 @@ namespace project.DAO
 
             return listCategory;
         }
+
+        public Category GetCategoryByID (int id)
+        {
+            string query = "SELECT c.id , c.fcName FROM FoodCategory AS c, Food AS f WHERE f.idCategory = c.id AND f.id = " + id;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                return new Category(item);
+            }
+
+            return null;
+        }
     }
 }

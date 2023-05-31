@@ -121,6 +121,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.lsvBill.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lsvBill.GridLines = true;
             this.lsvBill.Location = new System.Drawing.Point(0, 0);
             this.lsvBill.Name = "lsvBill";
@@ -167,7 +168,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(247, 14);
+            this.label1.Location = new System.Drawing.Point(244, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 25);
             this.label1.TabIndex = 9;
@@ -176,7 +177,7 @@
             // txbTotalBillPrice
             // 
             this.txbTotalBillPrice.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txbTotalBillPrice.Location = new System.Drawing.Point(203, 42);
+            this.txbTotalBillPrice.Location = new System.Drawing.Point(247, 42);
             this.txbTotalBillPrice.Name = "txbTotalBillPrice";
             this.txbTotalBillPrice.ReadOnly = true;
             this.txbTotalBillPrice.Size = new System.Drawing.Size(102, 28);

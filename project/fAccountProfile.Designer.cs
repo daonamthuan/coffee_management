@@ -33,11 +33,11 @@
             this.usn = new System.Windows.Forms.Label();
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txbPassword = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txbNewPassword = new System.Windows.Forms.TextBox();
@@ -50,10 +50,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -99,51 +99,18 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txbDisplayName);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(458, 166);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(393, 141);
+            this.panel1.Size = new System.Drawing.Size(393, 78);
             this.panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(0, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Fullname:";
-            // 
-            // txbDisplayName
-            // 
-            this.txbDisplayName.BackColor = System.Drawing.Color.Gainsboro;
-            this.txbDisplayName.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbDisplayName.Location = new System.Drawing.Point(40, 107);
-            this.txbDisplayName.Name = "txbDisplayName";
-            this.txbDisplayName.Size = new System.Drawing.Size(326, 31);
-            this.txbDisplayName.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.AutoSize = true;
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txbPassword);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(458, 365);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(396, 204);
-            this.panel3.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label2.Location = new System.Drawing.Point(0, -4);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 29);
             this.label2.TabIndex = 1;
@@ -153,10 +120,41 @@
             // 
             this.txbPassword.BackColor = System.Drawing.Color.Gainsboro;
             this.txbPassword.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbPassword.Location = new System.Drawing.Point(40, 28);
+            this.txbPassword.Location = new System.Drawing.Point(35, 31);
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(321, 31);
+            this.txbPassword.Size = new System.Drawing.Size(329, 31);
             this.txbPassword.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(461, 303);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Fullname:";
+            // 
+            // txbDisplayName
+            // 
+            this.txbDisplayName.BackColor = System.Drawing.Color.Gainsboro;
+            this.txbDisplayName.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbDisplayName.Location = new System.Drawing.Point(493, 335);
+            this.txbDisplayName.Name = "txbDisplayName";
+            this.txbDisplayName.Size = new System.Drawing.Size(326, 31);
+            this.txbDisplayName.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.txbPassword);
+            this.panel3.Location = new System.Drawing.Point(458, 369);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(396, 211);
+            this.panel3.TabIndex = 3;
             // 
             // panel4
             // 
@@ -164,7 +162,7 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.txbNewPassword);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Location = new System.Drawing.Point(0, 61);
+            this.panel4.Location = new System.Drawing.Point(0, 68);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(393, 140);
             this.panel4.TabIndex = 4;
@@ -184,9 +182,9 @@
             // 
             this.txbNewPassword.BackColor = System.Drawing.Color.Gainsboro;
             this.txbNewPassword.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbNewPassword.Location = new System.Drawing.Point(39, 32);
+            this.txbNewPassword.Location = new System.Drawing.Point(35, 32);
             this.txbNewPassword.Name = "txbNewPassword";
-            this.txbNewPassword.Size = new System.Drawing.Size(322, 31);
+            this.txbNewPassword.Size = new System.Drawing.Size(329, 31);
             this.txbNewPassword.TabIndex = 4;
             // 
             // panel5
@@ -214,9 +212,9 @@
             // 
             this.txbReEnterPassword.BackColor = System.Drawing.Color.Gainsboro;
             this.txbReEnterPassword.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbReEnterPassword.Location = new System.Drawing.Point(35, 32);
+            this.txbReEnterPassword.Location = new System.Drawing.Point(32, 32);
             this.txbReEnterPassword.Name = "txbReEnterPassword";
-            this.txbReEnterPassword.Size = new System.Drawing.Size(326, 31);
+            this.txbReEnterPassword.Size = new System.Drawing.Size(329, 31);
             this.txbReEnterPassword.TabIndex = 5;
             // 
             // btnUpdateProfile
@@ -271,7 +269,7 @@
             this.panel6.Controls.Add(this.label5);
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(390, 696);
+            this.panel6.Size = new System.Drawing.Size(390, 701);
             this.panel6.TabIndex = 10;
             // 
             // panel7
@@ -283,6 +281,18 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(532, 144);
             this.panel7.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(58)))), ((int)(((byte)(118)))));
+            this.label7.Location = new System.Drawing.Point(396, 254);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(554, 32);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Điền mật khẩu để thay đổi thông tin tài khoản.";
             // 
             // lbUsername
             // 
@@ -315,18 +325,6 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Edit Profile";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(58)))), ((int)(((byte)(118)))));
-            this.label7.Location = new System.Drawing.Point(406, 310);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(265, 41);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Change password";
-            // 
             // fAccountProfile
             // 
             this.AcceptButton = this.btnUpdateProfile;
@@ -336,6 +334,8 @@
             this.CancelButton = this.btnExitUpdateProfile;
             this.ClientSize = new System.Drawing.Size(956, 697);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.txbDisplayName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.btnExitUpdateProfile);

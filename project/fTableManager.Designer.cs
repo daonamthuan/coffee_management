@@ -43,10 +43,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txbTotalBillPrice = new System.Windows.Forms.TextBox();
-            this.cbbChangeTable = new System.Windows.Forms.ComboBox();
-            this.btnChangeTable = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.btnDiscount = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,7 +54,6 @@
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodQuantity)).BeginInit();
             this.SuspendLayout();
@@ -153,10 +148,6 @@
             // 
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txbTotalBillPrice);
-            this.panel3.Controls.Add(this.cbbChangeTable);
-            this.panel3.Controls.Add(this.btnChangeTable);
-            this.panel3.Controls.Add(this.numericUpDown2);
-            this.panel3.Controls.Add(this.btnDiscount);
             this.panel3.Controls.Add(this.btnCheckout);
             this.panel3.Location = new System.Drawing.Point(544, 479);
             this.panel3.Name = "panel3";
@@ -166,72 +157,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(244, 6);
+            this.label1.Location = new System.Drawing.Point(40, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 25);
+            this.label1.Size = new System.Drawing.Size(108, 28);
             this.label1.TabIndex = 9;
             this.label1.Text = "Tổng tiền:";
             // 
             // txbTotalBillPrice
             // 
             this.txbTotalBillPrice.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txbTotalBillPrice.Location = new System.Drawing.Point(247, 42);
+            this.txbTotalBillPrice.Location = new System.Drawing.Point(29, 46);
+            this.txbTotalBillPrice.MinimumSize = new System.Drawing.Size(120, 30);
             this.txbTotalBillPrice.Name = "txbTotalBillPrice";
             this.txbTotalBillPrice.ReadOnly = true;
-            this.txbTotalBillPrice.Size = new System.Drawing.Size(102, 28);
+            this.txbTotalBillPrice.Size = new System.Drawing.Size(129, 30);
             this.txbTotalBillPrice.TabIndex = 8;
             this.txbTotalBillPrice.Text = "0";
             this.txbTotalBillPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cbbChangeTable
-            // 
-            this.cbbChangeTable.FormattingEnabled = true;
-            this.cbbChangeTable.Location = new System.Drawing.Point(12, 42);
-            this.cbbChangeTable.Name = "cbbChangeTable";
-            this.cbbChangeTable.Size = new System.Drawing.Size(72, 28);
-            this.cbbChangeTable.TabIndex = 4;
-            // 
-            // btnChangeTable
-            // 
-            this.btnChangeTable.Location = new System.Drawing.Point(3, 0);
-            this.btnChangeTable.Name = "btnChangeTable";
-            this.btnChangeTable.Size = new System.Drawing.Size(94, 40);
-            this.btnChangeTable.TabIndex = 7;
-            this.btnChangeTable.Text = "Chuyển bàn";
-            this.btnChangeTable.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Location = new System.Drawing.Point(103, 43);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(94, 27);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnDiscount
-            // 
-            this.btnDiscount.Location = new System.Drawing.Point(103, 0);
-            this.btnDiscount.Name = "btnDiscount";
-            this.btnDiscount.Size = new System.Drawing.Size(94, 40);
-            this.btnDiscount.TabIndex = 5;
-            this.btnDiscount.Text = "Giảm giá";
-            this.btnDiscount.UseVisualStyleBackColor = true;
             // 
             // btnCheckout
             // 
             this.btnCheckout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.btnCheckout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.btnCheckout.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCheckout.Location = new System.Drawing.Point(394, 0);
+            this.btnCheckout.Location = new System.Drawing.Point(365, 0);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(105, 82);
+            this.btnCheckout.Size = new System.Drawing.Size(110, 85);
             this.btnCheckout.TabIndex = 4;
             this.btnCheckout.Text = "Tính tiền";
             this.btnCheckout.UseVisualStyleBackColor = true;
@@ -335,7 +288,6 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodQuantity)).EndInit();
@@ -361,10 +313,6 @@
         private ComboBox cbbFoodByCategory;
         private ComboBox cbbCategory;
         private FlowLayoutPanel flpTable;
-        private NumericUpDown numericUpDown2;
-        private Button btnDiscount;
-        private ComboBox cbbChangeTable;
-        private Button btnChangeTable;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;

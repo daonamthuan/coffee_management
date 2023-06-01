@@ -1,6 +1,7 @@
 ﻿using project.DAO;
 using project.DTO;
 using System.Drawing.Drawing2D;
+using System.Text.RegularExpressions;
 
 namespace project
 {
@@ -15,10 +16,22 @@ namespace project
         {
             string username = txbUsername.Text;
             string password = txbPassword.Text;
+
+            // Check valid username and password.
+            if (username.Trim().Contains(" ") || !Regex.IsMatch(password, @"^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,}$"))
+            {
+                if (username.Trim().Contains(" ")) lbValideUsername.Visible = true;
+                if (!Regex.IsMatch(password, @"^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,}$")) lbValidPassword.Visible = true;
+                return;
+            }
+
             if (Login(username, password))
             {
                 Account loginAccount = AccountDAO.Instance.GetAccountByUserName(username);
                 fTableManager f = new fTableManager(loginAccount);
+
+                lbValideUsername.Visible = false;
+                lbValidPassword.Visible = false;
                 // dialog la thao tac chi duoc xu li tren top most, no cung la top most
                 this.Hide();
                 f.ShowDialog();
@@ -26,7 +39,7 @@ namespace project
             }
             else
             {
-                MessageBox.Show("Login fail", "Thông báo");
+                MessageBox.Show("Sai tên thông tin đăng nhập", "Đăng nhập thất bại");
             }
             
         }

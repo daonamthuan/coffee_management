@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbValidPassword = new System.Windows.Forms.Label();
+            this.lbValideUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -50,6 +52,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbValidPassword);
+            this.panel1.Controls.Add(this.lbValideUsername);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel3);
@@ -58,14 +62,37 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Location = new System.Drawing.Point(12, 215);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(402, 369);
+            this.panel1.Size = new System.Drawing.Size(402, 504);
             this.panel1.TabIndex = 0;
+            // 
+            // lbValidPassword
+            // 
+            this.lbValidPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbValidPassword.ForeColor = System.Drawing.Color.Red;
+            this.lbValidPassword.Location = new System.Drawing.Point(35, 189);
+            this.lbValidPassword.Name = "lbValidPassword";
+            this.lbValidPassword.Size = new System.Drawing.Size(347, 40);
+            this.lbValidPassword.TabIndex = 6;
+            this.lbValidPassword.Text = "Mật khẩu phải ít nhất 8 ký tự bao gồm: chữ, số, ký tự đặc biệt.";
+            this.lbValidPassword.Visible = false;
+            // 
+            // lbValideUsername
+            // 
+            this.lbValideUsername.AutoSize = true;
+            this.lbValideUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbValideUsername.ForeColor = System.Drawing.Color.Red;
+            this.lbValideUsername.Location = new System.Drawing.Point(35, 101);
+            this.lbValideUsername.Name = "lbValideUsername";
+            this.lbValideUsername.Size = new System.Drawing.Size(339, 20);
+            this.lbValideUsername.TabIndex = 2;
+            this.lbValideUsername.Text = "Tên đăng nhập không được chứa khoảng trắng.";
+            this.lbValideUsername.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(81, 299);
+            this.pictureBox1.Location = new System.Drawing.Point(76, 370);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,7 +104,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("STFangsong", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(157, 326);
+            this.label1.Location = new System.Drawing.Point(162, 395);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 20);
             this.label1.TabIndex = 4;
@@ -88,9 +115,9 @@
             this.panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel3.Controls.Add(this.pw);
             this.panel3.Controls.Add(this.txbPassword);
-            this.panel3.Location = new System.Drawing.Point(21, 90);
+            this.panel3.Location = new System.Drawing.Point(21, 127);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(366, 89);
+            this.panel3.Size = new System.Drawing.Size(366, 61);
             this.panel3.TabIndex = 1;
             // 
             // pw
@@ -98,7 +125,7 @@
             this.pw.AutoSize = true;
             this.pw.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.pw.ForeColor = System.Drawing.SystemColors.Window;
-            this.pw.Location = new System.Drawing.Point(19, 0);
+            this.pw.Location = new System.Drawing.Point(14, -3);
             this.pw.Name = "pw";
             this.pw.Size = new System.Drawing.Size(111, 29);
             this.pw.TabIndex = 1;
@@ -110,16 +137,16 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(330, 27);
             this.txbPassword.TabIndex = 0;
-            this.txbPassword.Text = "1";
+            this.txbPassword.Text = "12345678Aa@";
             this.txbPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnLogin.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLogin.Location = new System.Drawing.Point(214, 203);
+            this.btnLogin.Location = new System.Drawing.Point(211, 256);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(126, 54);
+            this.btnLogin.Size = new System.Drawing.Size(120, 58);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -129,9 +156,9 @@
             // 
             this.panel2.Controls.Add(this.usn);
             this.panel2.Controls.Add(this.txbUsername);
-            this.panel2.Location = new System.Drawing.Point(21, 3);
+            this.panel2.Location = new System.Drawing.Point(21, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(366, 81);
+            this.panel2.Size = new System.Drawing.Size(366, 72);
             this.panel2.TabIndex = 0;
             // 
             // usn
@@ -158,9 +185,9 @@
             // 
             this.btnExit.BackColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.Location = new System.Drawing.Point(65, 203);
+            this.btnExit.Location = new System.Drawing.Point(61, 256);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(120, 54);
+            this.btnExit.Size = new System.Drawing.Size(120, 58);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -183,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(58)))), ((int)(((byte)(118)))));
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(430, 596);
+            this.ClientSize = new System.Drawing.Size(430, 678);
             this.Controls.Add(this.picLogin);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -217,5 +244,7 @@
         private PictureBox picLogin;
         private PictureBox pictureBox1;
         private Label label1;
+        private Label lbValideUsername;
+        private Label lbValidPassword;
     }
 }

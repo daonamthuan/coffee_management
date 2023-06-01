@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,6 +50,24 @@ namespace project
         void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
         {
             dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
+            LoadStatistic();
+        }
+
+        void LoadStatistic()
+        {
+            int totalNumberBill = 0;
+            float totalPriceBill = 0;
+            if (dtgvBill.DataSource is DataTable data)
+            {
+                foreach (DataRow row in data.Rows)
+                {
+                    totalNumberBill++;
+                    totalPriceBill += (float)Convert.ToDouble(row[3]);
+                }    
+            }
+            CultureInfo culture = new CultureInfo("vi-VN");
+            txbTotalNumberBill.Text = totalNumberBill.ToString();
+            txbTotalPrice.Text = totalPriceBill.ToString("c");
         }
         void AddFoodBinding()
         {
@@ -140,6 +160,24 @@ namespace project
                 MessageBox.Show("Đặt lại mật khẩu thất bại", "Thông báo");
             }
         }
+
+        bool CheckValidUsernameAndPassword(string username, string password)
+        {
+            if (username.Trim().Contains(" "))
+            {
+                MessageBox.Show("Tên đăng nhập không được chứa khoảng trắng", "Thông báo");
+                return false;
+            }
+            if (!Regex.IsMatch(password, @"^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,}$"))
+            {
+                MessageBox.Show("Mật khẩu phải ít nhất 8 ký tự và phải bao gồm cả chữ, số, ký tự đặc biệt!", "Thông báo");
+                return false;
+            }
+
+            return true;
+        }
+
+   
 
         #endregion
 
@@ -286,6 +324,13 @@ namespace project
             string username = txbAccountUsername.Text;
             string displayname = txbAccountFullname.Text;
             int type = Convert.ToInt32(nmType.Value);
+
+            //if (username.Trim().Contains(" "))
+            //{
+            //    MessageBox.Show("Tên đăng nhập không được chứa khoảng trắng", "Thông báo");
+            //    return;
+            //}
+
             if (username == "" || displayname == "")
             {
                 MessageBox.Show("Bạn phải điền đầy đủ thông tin", "Thông báo");
@@ -319,9 +364,8 @@ namespace project
                 DeleteAccount(username);
             }
             else
-                MessageBox.Show("Không được xóa tài khoản hiện tại", "Thông báo");
+                MessageBox.Show("Tài khoản hiện đang đăng nhập!", "Thông báo");
             
         }
-
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,12 @@ namespace project.DAO
 
         public bool Login(string userName ,string passWord)
         {
+            /* C# hỗ trợ thư viện mã hóa mật khẩu MD5
+             * Từ chuỗi => chuyển thành mảng byte => (dùng thư viện MD5) => chuyển thành mảng byte khác đã được băm
+             */
+            //byte[] temp = ASCIIEncoding.ASCII.GetBytes(passWord); // Lấy mảng kiểu byte từ chuỗi
+            //byte[] hashData = new MD5CryptoServiceProvider().ComputeHash(temp); // mật khẩu đã được mã hóa
+
             string query = "USP_Login @userName , @passWord";
             DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord }); ;
 

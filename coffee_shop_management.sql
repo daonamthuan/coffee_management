@@ -24,11 +24,12 @@ GO
 CREATE TABLE Account
 (
 	aUsername nvarchar(100) PRIMARY KEY,
-	aPassword nvarchar(1000) NOT NULL,
+	aPassword nvarchar(100) NOT NULL,
 	displayname nvarchar(100) NOT NULL DEFAULT N'Kter',
 	aType int NOT NULL DEFAULT 0		-- 1 la admin, 0 la staff
 )
 GO
+
 
 CREATE TABLE FoodCategory
 (
@@ -353,3 +354,5 @@ GO
 SELECT * FROM Food WHERE [dbo].[fuConvertToUnsign1](fName) LIKE N'%' + [dbo].[fuConvertToUnsign1](N'mực') + '%'
 
 SELECT * FROM Account
+
+DELETE Account WHERE aUsername = N''

@@ -52,27 +52,34 @@ namespace project.DAO
 
         public bool InsertAccount(string username, string displayname, int type)
         {
-            string query = "INSERT INTO Account (aUsername , displayname , aType) VALUES (N'" + username + "' , N'" + displayname + "' , " + type + " )";
+            string query = "INSERT INTO Account (aUsername , aPassword , displayname , aType) VALUES (N'" + username + "' , N'12345678Aa@' , N'" + displayname + "' , " + type + " )";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
 
-        public bool UpdateFood(int id, string username, string displayname, int type)
+        public bool UpdateAccount(string username, string displayname, int type)
         {
-            string query = String.Format("UPDATE Account SET aUsername = N'{0}' , displayname = N'{1}', type = {2} WHERE id = {3}", username, displayname, type, id);
+            string query = String.Format("UPDATE Account SET displayname = N'{1}', aType = {2} WHERE aUsername = N'{0}'", username, displayname, type);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
 
-        public bool DeleteFood(int idAccount)
+        public bool DeleteAccount(string username)
         {
-            string query = "DELETE Food WHERE id = " + idAccount;
+            string query = "DELETE Account WHERE aUsername = N'" + username + "'";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
 
+        public bool ResetPassword(string username)
+        {
+            string query = String.Format("UPDATE Account SET aPassword = '12345678Aa@' WHERE aUsername = N'{0}'", username);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace project
 
         BindingSource foodList = new BindingSource();
         BindingSource accountList = new BindingSource();
+
+        public Account loginAccount;
         public fAdmin()
         {
             InitializeComponent();
@@ -79,9 +81,10 @@ namespace project
             // Thuoc tinh "Text" thay doi theo "Name", nguồn là DataSource
             txbAccountUsername.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "aUsername", true, DataSourceUpdateMode.Never));
             txbAccountFullname.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "displayName", true, DataSourceUpdateMode.Never));
-            txbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "aType", true, DataSourceUpdateMode.Never));
+            nmType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "aType", true, DataSourceUpdateMode.Never));
         }
 
+        // LoadListAccount : cho BindingSource accountList = DataTable trả về
         void LoadListAccount()
         {
             accountList.DataSource = AccountDAO.Instance.GetListAccount();
@@ -98,6 +101,44 @@ namespace project
                 MessageBox.Show("Thêm tài khoản thất bại", "Thông báo");
             }
             LoadListAccount();
+        }
+
+        void EditAccount(string username, string displayName, int type)
+        {
+            if (AccountDAO.Instance.UpdateAccount(username, displayName, type))
+            {
+                MessageBox.Show("Cập nhật tài khoản thành công", "Thông báo");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật tài khoản thất bại", "Thông báo");
+            }
+            LoadListAccount();
+        }
+
+        void DeleteAccount(string username)
+        {
+            if (AccountDAO.Instance.DeleteAccount(username))
+            {
+                MessageBox.Show("Xóa tài khoản thành công", "Thông báo");
+            }
+            else
+            {
+                MessageBox.Show("Xóa tài khoản thất bại", "Thông báo");
+            }
+            LoadListAccount();
+        }
+
+        void ResetPassword(string username)
+        {
+            if (AccountDAO.Instance.ResetPassword(username))
+            {
+                MessageBox.Show("Đặt lại mật khẩu thành công", "Thông báo");
+            }
+            else
+            {
+                MessageBox.Show("Đặt lại mật khẩu thất bại", "Thông báo");
+            }
         }
 
         #endregion
@@ -232,6 +273,7 @@ namespace project
             string name = txbSearchFood.Text;
             foodList.DataSource = SearchFoodByName(name);
         }
+
         private void btnViewAccount_Click(object sender, EventArgs e)
         {
             LoadListAccount();
@@ -243,17 +285,43 @@ namespace project
         {
             string username = txbAccountUsername.Text;
             string displayname = txbAccountFullname.Text;
-            int type = Convert.ToInt32(txbAccountType.Text);
+            int type = Convert.ToInt32(nmType.Value);
+            if (username == "" || displayname == "")
+            {
+                MessageBox.Show("Bạn phải điền đầy đủ thông tin", "Thông báo");
+                return;
+            }
+
+            AddAccount(username, displayname, type);
+        }
+
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            string username = txbAccountUsername.Text;
+            string displayname = txbAccountFullname.Text;
+            int type = Convert.ToInt32(nmType.Value);
+            if (username == "" || displayname == "")
+            {
+                MessageBox.Show("Bạn phải điền đầy đủ thông tin", "Thông báo");
+                return;
+            }
+
+            EditAccount(username, displayname, type);
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
+            string username = txbAccountUsername.Text;
 
+            if (loginAccount.Username != username)
+            {
+                DeleteAccount(username);
+            }
+            else
+                MessageBox.Show("Không được xóa tài khoản hiện tại", "Thông báo");
+            
         }
 
-        private void btnEditAccount_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

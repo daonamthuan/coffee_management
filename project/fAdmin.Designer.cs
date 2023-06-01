@@ -31,7 +31,7 @@
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.txbAccountType = new System.Windows.Forms.TextBox();
+            this.nmType = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -111,6 +111,7 @@
             this.tbAdmin = new System.Windows.Forms.TabControl();
             this.tpAccount.SuspendLayout();
             this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmType)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
@@ -169,24 +170,29 @@
             this.btnResetPassword.Name = "btnResetPassword";
             this.btnResetPassword.Size = new System.Drawing.Size(94, 59);
             this.btnResetPassword.TabIndex = 4;
-            this.btnResetPassword.Text = "View";
+            this.btnResetPassword.Text = "Đặt lại mật khẩu";
             this.btnResetPassword.UseVisualStyleBackColor = true;
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.txbAccountType);
+            this.panel19.Controls.Add(this.nmType);
             this.panel19.Controls.Add(this.label11);
             this.panel19.Location = new System.Drawing.Point(429, 209);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(350, 63);
             this.panel19.TabIndex = 10;
             // 
-            // txbAccountType
+            // nmType
             // 
-            this.txbAccountType.Location = new System.Drawing.Point(122, 18);
-            this.txbAccountType.Name = "txbAccountType";
-            this.txbAccountType.Size = new System.Drawing.Size(225, 27);
-            this.txbAccountType.TabIndex = 2;
+            this.nmType.Location = new System.Drawing.Point(122, 18);
+            this.nmType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmType.Name = "nmType";
+            this.nmType.Size = new System.Drawing.Size(150, 27);
+            this.nmType.TabIndex = 2;
             // 
             // label11
             // 
@@ -947,6 +953,7 @@
             this.tpAccount.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmType)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel18.ResumeLayout(false);
@@ -1089,6 +1096,6 @@
         private Panel panel3;
         private DataGridView dtgvBill;
         private TabControl tbAdmin;
-        private TextBox txbAccountType;
+        private NumericUpDown nmType;
     }
 }

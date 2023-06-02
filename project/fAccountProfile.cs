@@ -70,5 +70,11 @@ namespace project
             UpdateAccount();
         }
 
+        private void fAccountProfile_Resize(object sender, EventArgs e)
+        {
+            int width = this.Size.Width;
+            int height = this.Size.Height;
+            this.Size = new Size(width, height);
+        }
     }
 }

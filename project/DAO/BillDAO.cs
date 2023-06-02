@@ -55,6 +55,24 @@ namespace project.DAO
         {
             return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBillByDate @checkIn , @checkOut", new object[] { checkIn, checkOut });
         }
+        public DataTable GetListBillByDateAndPage(DateTime checkIn, DateTime checkOut, int pageNum)
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBillByDateAndPage @checkIn , @checkOut , @page", new object[] { checkIn, checkOut, pageNum });
+        }
 
+        public int GetNumberBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("EXEC USP_GetNumBillByDate @checkIn , @checkOut  ", new object[] { checkIn, checkOut });
+        }
+
+        public float GetTotalPriceByDate(DateTime checkIn, DateTime checkOut)
+        {
+            return (float)Convert.ToDouble(DataProvider.Instance.ExecuteScalar("EXEC USP_GetTotalStatisticByDate @checkIn , @checkOut ", new object[] { checkIn, checkOut }));
+        }
+
+        public void DeleteBillByTableID(int id)
+        {
+            DataProvider.Instance.ExecuteNonQuery("DELETE Bill WHERE idTable = " + id);
+        }
     }
 }

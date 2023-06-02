@@ -54,7 +54,12 @@ namespace project.DAO
 
         public DataTable GetListAccount()
         {
-            return  DataProvider.Instance.ExecuteQuery("SELECT aUsername, displayname, aType FROM Account");
+            return  DataProvider.Instance.ExecuteQuery("SELECT aUsername AS N'Username', displayname AS N'Displayname' , aType AS N'Type' FROM Account");
+        }
+
+        public bool CheckUsernameExist(string username)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT (*) FROM Account WHERE aUsername = N'" + username + "'") > 0;
         }
 
         public bool InsertAccount(string username, string displayname, int type)

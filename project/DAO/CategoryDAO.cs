@@ -48,5 +48,39 @@ namespace project.DAO
 
             return null;
         }
+
+        public bool InsertCategory (string categoryName)
+        {
+            string query = "INSERT INTO FoodCategory (fcName) VALUES (N'" + categoryName + "')";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateCategory(string categoryName, int id)
+        {
+            string query = String.Format("UPDATE FoodCategory SET fcName = N'{0}' WHERE id = {1}", categoryName, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteCategory(int idCategory)
+        {
+            FoodDAO.Instance.DeleteFoodByCategoryID(idCategory);
+            string query = "DELETE FoodCategory WHERE id = " + idCategory;
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        // Trả về true nếu Category tồn tại
+        public bool CheckExistCategory(string categoryName)
+        {
+            int result;
+            result = (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT(*) FROM FoodCategory WHERE fcName =  N'" + categoryName + "'");
+
+            return result > 0;
+        }
     }
 }

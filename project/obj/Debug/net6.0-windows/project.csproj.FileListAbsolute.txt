@@ -27,3 +27,4 @@ D:\2223\fourth\software_engineering\learning_cfshop\project\project\bin\Debug\ne
 D:\2223\fourth\software_engineering\learning_cfshop\project\project\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\2223\fourth\software_engineering\learning_cfshop\project\project\obj\Debug\net6.0-windows\project.csproj.CopyComplete
 D:\2223\fourth\software_engineering\learning_cfshop\project\project\obj\Debug\net6.0-windows\project.Properties.Resources.resources
+D:\2223\fourth\software_engineering\learning_cfshop\project\project\bin\Debug\net6.0-windows\ReportPortal.Client.dll

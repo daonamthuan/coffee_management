@@ -25,7 +25,7 @@ CREATE TABLE Account
 (
 	aUsername nvarchar(100) PRIMARY KEY,
 	aPassword nvarchar(100) NOT NULL,
-	displayname nvarchar(100) NOT NULL DEFAULT N'Kter',
+	displayname nvarchar(100) NOT NULL DEFAULT N'Chưa đặt tên',
 	aType int NOT NULL DEFAULT 0		-- 1 la admin, 0 la staff
 )
 GO
@@ -69,33 +69,30 @@ CREATE TABLE BillDetail
 )
 GO
 
-INSERT INTO Account (aUsername, displayname, aPassword, aType)
-VALUES
-	(N'K9', N'RongK9', N'1', 1),
-	(N'staff', N'staff', N'1', 0);
-
 SELECT * FROM Account
 GO
 
 -- Insert FoodCategory
 INSERT INTO FoodCategory (fcName)
 VALUES
-	(N'Hải sản'),
-	(N'Nông sản'),
-	(N'Lâm sản'),
-	(N'Sản sản'),
-	(N'Nước');
+	(N'Cà phê'),
+	(N'Đá xay'),
+	(N'Trà'),
+	(N'Sữa chua'),
+	(N'Bánh'),
+	(N'Nước ép');
 
 -- Insert Food
 INSERT INTO Food (fName, idCategory, price)
 VALUES
-	(N'Mực một nắng nướng sa tế',  1, 120000), 
-	(N'Nghêu hấp xả', 1, 50000),
-	(N'Dú dê nướng sữa', 2, 60000),
-	(N'Heo rừng nướng muối ớt', 3, 75000),
-	(N'Cơm chiên mushi', 4, 99999),
-	(N'7up', 5, 15000),
-	(N'Cafe', 2, 12000);
+	(N'Cà phê đen',  1, 15000), 
+	(N'Cà phê sữa', 1, 18000),
+	(N'Bạc xỉu', 1, 20000),
+	(N'Bánh bông lan trứng muối', 5, 55000),
+	(N'Nước ép ổi', 16, 35000),
+	(N'Trà đào', 3, 20000),
+	(N'Đá xay việt quất', 2, 32000),
+	(N'Sữa chua kiwi', 4, 32000),
 
 -- Insert Bill
 INSERT INTO Bill (dateCheckin, dateCheckout, idTable, billStatus)
@@ -113,7 +110,7 @@ VALUES
 	(3, 1, 2),
 	(3, 6, 2),
 	(4, 5, 2);
-
+GO
 
 -- Procedure la cai ham de tai su dung nhieu lan
 CREATE PROC USP_GetAccountByUsername
@@ -124,21 +121,20 @@ BEGIN
 END
 GO
 
--- Goi ham
-EXEC USP_GetAccountByUsername @userName = N'K9' 
-GO
 
 
 CREATE PROC USP_Login
-@userName nvarchar(50), @passWord nvarchar(50)
+@userName nvarchar(100), @passWord nvarchar(100)
 AS
 BEGIN
-	SELECT * FROM Account WHERE aUsername=@userName AND aPassword=@passWord
+	--SELECT * FROM Account WHERE aUsername=@userName AND aPassword=@passWord
+	SELECT * FROM Account WHERE aUsername COLLATE SQL_Latin1_General_CP1_CS_AS = @userName AND aPassword COLLATE SQL_Latin1_General_CP1_CS_AS = @passWord
 END
 GO
 
+
 DECLARE @i INT = 0
-WHILE @i <= 10
+WHILE @i <= 22
 BEGIN
 	INSERT FoodTable (tName) VALUES (N'Bàn ' + CAST(@i AS nvarchar(50)))
 	SET @i = @i + 1
@@ -147,31 +143,16 @@ END
 SELECT * FROM FoodTable
 GO
 
-DECLARE @i INT = 0
-WHILE @i <= 10
-BEGIN
-	INSERT FoodTable (tName) VALUES (N'Bàn ' + CAST(@i AS nvarchar(50)))
-	SET @i = @i + 1
-END
 
-SELECT * FROM FoodTable
-GO
-
-CREATE PROC USP_GetTableList
-AS SELECT * FROM FoodTable
+ALTER PROC USP_GetTableList
+AS 
+	SELECT id , tName, tStatus FROM FoodTable
 GO
 
 EXEC USP_GetTableList
 GO
 
 
-DECLARE @i INT = 22
-WHILE @i > 0
-BEGIN
-	UPDATE FoodTable SET tName = (N'Bàn ' + CAST(@i AS nvarchar(50))) WHERE id = @i
-	SET @i = @i - 1
-END
-GO
 
 CREATE PROC USP_InsertBill
 @idTable INT
@@ -181,6 +162,7 @@ BEGIN
 	VALUES (GETDATE(), NULL, @idTable, 0);
 END
 GO
+
 
 CREATE PROC USP_InsertBillDetail
 @idBill INT, @idFood INT, @quantity INT
@@ -216,32 +198,6 @@ END
 GO
 
 
-/*SELECT * FROM Bill
-GO
-SELECT * FROM BillDetail
-SELECT * FROM Food
-SELECT * FROM FoodTable
-SELECT * FROM FoodCategory
-
-SELECT * FROM BillDetail WHERE idBill = 2
-SELECT * FROM Bill WHERE idTable = 3 AND billStatus = 0 */
-
-/*SELECT f.fName, bd.quantity, f.price, f.price*bd.quantity as totalPrice FROM BillDetail as bd, Bill as b, Food as f
-WHERE b.id=bd.idBill AND f.id=bd.idFood AND b.idTable=3
-
-SELECT f.fName, bd.quantity, f.price, f.price*bd.quantity as totalPrice FROM BillDetail as bd, Bill as b, Food as f WHERE b.id = bd.idBill AND f.id = bd.idFood AND b.idTable = 3 AND b.billStatus = 0
-
-SELECT * FROM FoodCategory
-SELECT * FROM Food
-
-SELECT * FROM Food WHERE idCategory = 5
-
-EXEC USP_InsertBill 3
-EXEC USP_InsertBillDetail 3, 1, 1 */
-
---UPDATE Bill SET billStatus = 1 WHERE id = 1
---GO
-
 CREATE TRIGGER UTG_UpdateBillDetail ON BillDetail 
 FOR INSERT, UPDATE
 AS
@@ -256,7 +212,6 @@ BEGIN
 END
 GO
 
-SELECT * FROM BillDetail
 
 CREATE TRIGGER UTG_DeleteBillDetail ON BillDetail
 FOR DELETE
@@ -294,33 +249,6 @@ BEGIN
 END
 GO
 
---DELETE BillDetail
---DELETE Bill
-
-SET DATEFORMAT DMY
-
-ALTER TABLE Bill ADD totalPrice FLOAT DEFAULT 0
-GO
--- create store procedure at 
-CREATE PROC USP_GetListBillByDate
-@checkIn DATE, @checkOut DATE
-AS
-BEGIN
-	SELECT tName AS N'Tên bàn', dateCheckin AS N'Ngày ra', dateCheckout AS N'Ngày vào', b.totalPrice AS N'Tổng tiền'
-	FROM Bill AS b, FoodTable AS ft --, Food AS f
-	WHERE dateCheckin >= @checkIn AND dateCheckout <= @checkOut AND billStatus = 1 AND b.idTable = ft.id
-END
-GO
-
-SELECT tName AS N'Tên bàn', dateCheckin AS N'Ngày ra', dateCheckout AS N'Ngày vào', b.totalPrice AS N'Tổng tiền'
-FROM Bill AS b, FoodTable AS ft --, Food AS f
-WHERE dateCheckin >= '20230501' AND dateCheckout <= '20230530' AND billStatus = 1 AND b.idTable = ft.id
-
-EXEC USP_GetListBillByDate @checkIn = '20230501' , @checkOut = '20230530'
-
-SELECT * FROM Account
-GO
-
 CREATE PROC USP_UpdateAccount
 @username nvarchar(50), @displayName nvarchar(50), @password nvarchar(50), @newpassword nvarchar(50)
 AS
@@ -341,18 +269,64 @@ BEGIN
 END
 GO
 
-SELECT * FROM Food
-SELECT c.id , c.fcName FROM FoodCategory AS c, Food AS f WHERE f.idCategory = c.id AND f.id = 3
-GO
+--DELETE BillDetail
+--DELETE Bill
 
+SET DATEFORMAT DMY
+
+ALTER TABLE Bill ADD totalPrice FLOAT DEFAULT 0
+GO
+-- create store procedure at 
+CREATE PROC USP_GetListBillByDate
+@checkIn DATE, @checkOut DATE
+AS
+BEGIN
+	SELECT tName AS N'Tên bàn', dateCheckin AS N'Ngày ra', dateCheckout AS N'Ngày vào', b.totalPrice AS N'Tổng tiền'
+	FROM Bill AS b, FoodTable AS ft --, Food AS f
+	WHERE dateCheckin >= @checkIn AND dateCheckout <= @checkOut AND billStatus = 1 AND b.idTable = ft.id
+END
+GO
 
 -- Hàm có sẵn: chuyển có dấu về không dấu
 -- Ý tưởng: chuyển cả input và data về không dấu và tìm kiếm
 CREATE FUNCTION  ( @strInput NVARCHAR(4000) ) RETURNS NVARCHAR(4000) AS BEGIN IF @strInput IS NULL RETURN @strInput IF @strInput = '' RETURN @strInput DECLARE @RT NVARCHAR(4000) DECLARE @SIGN_CHARS NCHAR(136) DECLARE @UNSIGN_CHARS NCHAR (136) SET @SIGN_CHARS = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệế ìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵý ĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍ ÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ' +NCHAR(272)+ NCHAR(208) SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeee iiiiiooooooooooooooouuuuuuuuuuyyyyy AADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIII OOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD' DECLARE @COUNTER int DECLARE @COUNTER1 int SET @COUNTER = 1 WHILE (@COUNTER <=LEN(@strInput)) BEGIN SET @COUNTER1 = 1 WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1) BEGIN IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) ) BEGIN IF @COUNTER=1 SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1) ELSE SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER) BREAK END SET @COUNTER1 = @COUNTER1 +1 END SET @COUNTER = @COUNTER +1 END SET @strInput = replace(@strInput,' ','-') RETURN @strInput END
 GO
 
-SELECT * FROM Food WHERE [dbo].[fuConvertToUnsign1](fName) LIKE N'%' + [dbo].[fuConvertToUnsign1](N'mực') + '%'
 
-SELECT * FROM Account
+CREATE PROC USP_GetNumBillByDate
+@checkIn date, @checkOut date
+AS 
+BEGIN
+	SELECT COUNT(*)
+	FROM dbo.Bill AS b, FoodTable AS t
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.billStatus = 1
+	AND t.id = b.idTable
+END
+GO
 
-DELETE Account WHERE aUsername = N''
+CREATE PROC USP_GetListBillByDateAndPage
+@checkIn DATE, @checkOut DATE, @page INT
+AS
+BEGIN
+	DECLARE @pageRows INT = 14
+	DECLARE @selectRows INT = @pageRows
+	DECLARE @exceptRow INT = (@page - 1) * @pageRows
+	
+	-- Tạo ra bảng tạm
+	;WITH BillShow AS (SELECT b.id AS ID, tName, dateCheckin, dateCheckout, b.totalPrice
+	FROM Bill AS b, FoodTable AS ft --, Food AS f
+	WHERE dateCheckin >= @checkIn AND dateCheckout <= @checkOut AND billStatus = 1 AND b.idTable = ft.id)
+
+	SELECT TOP (@pageRows) ID , tName AS N'Tên bàn', dateCheckin AS N'Ngày ra', dateCheckout AS N'Ngày vào', totalPrice AS N'Tổng tiền' 
+	FROM BillShow WHERE ID NOT IN (SELECT TOP (@exceptRow) ID FROM BillShow)
+END
+GO
+
+
+CREATE PROC USP_GetTotalStatisticByDate
+@checkIn date, @checkOut date
+AS 
+BEGIN
+	SELECT SUM(totalPrice) FROM Bill WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut
+END
+GO

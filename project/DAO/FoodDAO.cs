@@ -87,5 +87,16 @@ namespace project.DAO
             }
             return listFood;
         }
+
+        // Khi xóa category thì xóa tất cả những món trong Category
+        public void DeleteFoodByCategoryID(int id)
+        {
+            DataProvider.Instance.ExecuteNonQuery("DELETE Food WHERE idCategory = " + id);
+        }
+
+        public bool CheckExistFood(string foodName) 
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT (*) FROM Food WHERE fName = N'" + foodName + "'") > 0;
+        }
     }
 }

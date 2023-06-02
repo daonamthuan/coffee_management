@@ -33,6 +33,14 @@
           }
         }
       },
+      "ReportPortal.Client/3.4.0": {
+        "runtime": {
+          "lib/net6.0/ReportPortal.Client.dll": {
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.0.0"
+          }
+        }
+      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "dependencies": {
           "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
@@ -163,6 +171,13 @@
       "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
+    },
+    "ReportPortal.Client/3.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L+6xxdV5ESlIDDjxIVwzxo2ITYwZVqw6rLAtqf2xedBQ3PzCXr+Om4d3NFfWpQ2CcSrvYc02yEYZm+D1s2eiyA==",
+      "path": "reportportal.client/3.4.0",
+      "hashPath": "reportportal.client.3.4.0.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",

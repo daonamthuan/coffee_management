@@ -34,6 +34,15 @@
           }
         }
       },
+      "ReportPortal.Client/3.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ReportPortal.Client.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ReportPortal.Client.dll": {}
+        }
+      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -208,6 +217,25 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "ReportPortal.Client/3.4.0": {
+      "sha512": "L+6xxdV5ESlIDDjxIVwzxo2ITYwZVqw6rLAtqf2xedBQ3PzCXr+Om4d3NFfWpQ2CcSrvYc02yEYZm+D1s2eiyA==",
+      "type": "package",
+      "path": "reportportal.client/3.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Logo.png",
+        "README.md",
+        "lib/net462/ReportPortal.Client.dll",
+        "lib/net462/ReportPortal.Client.xml",
+        "lib/net6.0/ReportPortal.Client.dll",
+        "lib/net6.0/ReportPortal.Client.xml",
+        "lib/netstandard2.0/ReportPortal.Client.dll",
+        "lib/netstandard2.0/ReportPortal.Client.xml",
+        "reportportal.client.3.4.0.nupkg.sha512",
+        "reportportal.client.nuspec"
       ]
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -476,6 +504,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "ReportPortal.Client >= 3.4.0",
       "SqlConnection >= 1.0.4",
       "System.Data.SqlClient >= 4.8.5"
     ]
@@ -519,6 +548,10 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "ReportPortal.Client": {
+            "target": "Package",
+            "version": "[3.4.0, )"
+          },
           "SqlConnection": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",

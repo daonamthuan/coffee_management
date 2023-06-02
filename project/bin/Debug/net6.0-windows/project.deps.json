@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "project/1.0.0": {
         "dependencies": {
+          "ReportPortal.Client": "3.4.0",
           "SqlConnection": "1.0.4",
           "System.Data.SqlClient": "4.8.5"
         },
@@ -20,6 +21,14 @@
         "dependencies": {
           "System.Security.AccessControl": "4.7.0",
           "System.Security.Principal.Windows": "4.7.0"
+        }
+      },
+      "ReportPortal.Client/3.4.0": {
+        "runtime": {
+          "lib/net6.0/ReportPortal.Client.dll": {
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.0.0"
+          }
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -122,6 +131,13 @@
       "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
+    },
+    "ReportPortal.Client/3.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L+6xxdV5ESlIDDjxIVwzxo2ITYwZVqw6rLAtqf2xedBQ3PzCXr+Om4d3NFfWpQ2CcSrvYc02yEYZm+D1s2eiyA==",
+      "path": "reportportal.client/3.4.0",
+      "hashPath": "reportportal.client.3.4.0.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",

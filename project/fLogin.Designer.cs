@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbValidPassword = new System.Windows.Forms.Label();
-            this.lbValideUsername = new System.Windows.Forms.Label();
+            this.lbValidUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -53,7 +53,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lbValidPassword);
-            this.panel1.Controls.Add(this.lbValideUsername);
+            this.panel1.Controls.Add(this.lbValidUsername);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel3);
@@ -73,26 +73,26 @@
             this.lbValidPassword.Name = "lbValidPassword";
             this.lbValidPassword.Size = new System.Drawing.Size(347, 40);
             this.lbValidPassword.TabIndex = 6;
-            this.lbValidPassword.Text = "Mật khẩu phải ít nhất 8 ký tự bao gồm: chữ, số, ký tự đặc biệt.";
+            this.lbValidPassword.Text = "Mật khẩu phải ít nhất 8 ký tự bao gồm: chữ, số và ký tự đặc biệt.";
             this.lbValidPassword.Visible = false;
             // 
-            // lbValideUsername
+            // lbValidUsername
             // 
-            this.lbValideUsername.AutoSize = true;
-            this.lbValideUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lbValideUsername.ForeColor = System.Drawing.Color.Red;
-            this.lbValideUsername.Location = new System.Drawing.Point(35, 101);
-            this.lbValideUsername.Name = "lbValideUsername";
-            this.lbValideUsername.Size = new System.Drawing.Size(339, 20);
-            this.lbValideUsername.TabIndex = 2;
-            this.lbValideUsername.Text = "Tên đăng nhập không được chứa khoảng trắng.";
-            this.lbValideUsername.Visible = false;
+            this.lbValidUsername.AutoSize = true;
+            this.lbValidUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbValidUsername.ForeColor = System.Drawing.Color.Red;
+            this.lbValidUsername.Location = new System.Drawing.Point(35, 101);
+            this.lbValidUsername.Name = "lbValidUsername";
+            this.lbValidUsername.Size = new System.Drawing.Size(339, 20);
+            this.lbValidUsername.TabIndex = 2;
+            this.lbValidUsername.Text = "Tên đăng nhập không được chứa khoảng trắng.";
+            this.lbValidUsername.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(76, 370);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 375);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,11 +104,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("STFangsong", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(162, 395);
+            this.label1.Location = new System.Drawing.Point(127, 403);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 20);
+            this.label1.Size = new System.Drawing.Size(219, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Coffee Management";
+            this.label1.Text = "IQ -5 Coffee Management";
             // 
             // panel3
             // 
@@ -179,7 +179,7 @@
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(330, 28);
             this.txbUsername.TabIndex = 0;
-            this.txbUsername.Text = "K9";
+            this.txbUsername.Text = "admin";
             // 
             // btnExit
             // 
@@ -244,7 +244,7 @@
         private PictureBox picLogin;
         private PictureBox pictureBox1;
         private Label label1;
-        private Label lbValideUsername;
+        private Label lbValidUsername;
         private Label lbValidPassword;
     }
 }

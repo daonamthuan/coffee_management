@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "i9PIM2D2rC+FtC5SbZC+W08VlczbfKSlxRpz+jgFg+X8OffFql+fhDfFAbcOKoV+1NBTZeIcH/dnwom/3qETlg==",
+  "dgSpecHash": "R29GHu5I5xmm+Vmh+XZjwaO38JFZGC05J+UVu1ZxL4LsbcLqzB9iE/+D/P4R4nJ5GxXyoQCSTPHTy/Wc4pmdNw==",
   "success": true,
   "projectFilePath": "D:\\2223\\fourth\\software_engineering\\learning_cfshop\\project\\project\\project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\reportportal.client\\3.4.0\\reportportal.client.3.4.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
